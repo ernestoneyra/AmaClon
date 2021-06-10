@@ -213,6 +213,10 @@ img.large {
 }
 
 /* Alert */
+.loading {
+    display: block !important;
+}
+
 .success {
     color: green;
 }
@@ -241,4 +245,57 @@ img.large {
 .upper-right {
     padding-right: 1rem;
     padding-left: 1rem;
+}
+
+/* FORM */
+.form {
+    max-width: 50vh;
+    margin: 5vh auto;
+}
+
+.form > div {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.form label {
+    margin: 1rem 0;
+    display: block;
+}
+.form input {
+    padding: 1rem 8rem 1rem 1rem;
+}
+
+/* DROPDOWN */
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    display: none;
+    right: 0;
+    min-width: 12rem;
+    padding: 1rem;
+    z-index: 1;
+    background-color: #32587e;
+    margin: 0;
+    border-radius: 0.5rem;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* CHECKOUT STEPS */
+.checkout-steps{
+    border-top: 0.3rem solid grey;
+    color: grey;
+    flex: 1;
+    padding: 1rem;
+}
+.checkout-steps > div.active{
+    border-top-color: orange;
+    color: orange;
 }
