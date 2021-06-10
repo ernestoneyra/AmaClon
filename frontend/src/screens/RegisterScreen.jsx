@@ -38,7 +38,7 @@ export default function RegisterScreen(props) {
   }, [redirect, userInfo])
 
   return (
-    <div>
+    <>
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>Create Account</h1>
@@ -99,6 +99,6 @@ export default function RegisterScreen(props) {
           </div>
           </div>
       </form>
-    </div>
+    </>
   );
 }

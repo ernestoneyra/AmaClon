@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingAddress } from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
-import { PAYMENT, SIGNIN } from "../constants/routes";
+import { PAYMENT_METHOD, SIGNIN } from "../constants/routes";
 
 export default function ShippingAddressScreen(props) {
   const userSignin = useSelector((state) => state.userSignin);
@@ -23,10 +23,10 @@ export default function ShippingAddressScreen(props) {
     dispatch(
       saveShippingAddress({ fullName, address, city, postalCode, country })
     );
-    props.history.push(PAYMENT);
+    props.history.push(PAYMENT_METHOD);
   };
   return (
-    <div>
+    <>
       <CheckoutSteps step1 step2></CheckoutSteps>
       <form className="form" onSubmit={submitHandler}>
         <div>
@@ -94,6 +94,6 @@ export default function ShippingAddressScreen(props) {
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 }
