@@ -35,7 +35,7 @@ export default function RegisterScreen(props) {
       if(userInfo) {
           props.history.push(redirect)
       }
-  }, [redirect, userInfo])
+  }, [props.history, redirect, userInfo])
 
   return (
     <>
