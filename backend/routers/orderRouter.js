@@ -4,12 +4,24 @@ import Order from "../models/orderModels.js";
 import { isAuth } from "../utils.js";
 
 const orderRouter = express.Router();
-
-orderRouter.post(
-  '/', //= '/api/orders'
+//backend api to return the orders of the current user
+orderRouter.get(
+  "/mine",
   isAuth,
   expressAsyncHandler(async (req, res) => {
-    if (req.body.orderItems.length === 0) { //contains order items or not. 
+    //get orders from order model
+    // only return users equal to req... id of current user
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
+orderRouter.post(
+  "/", //= '/api/orders'
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    if (req.body.orderItems.length === 0) {
+      //contains order items or not.
       res.status(400).send({ message: "Cart is empty" });
     } else {
       const order = new Order({
@@ -31,20 +43,20 @@ orderRouter.post(
 );
 
 orderRouter.get(
-  '/:id',
+  "/:id",
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
     if (order) {
       res.send(order);
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: "Order Not Found" });
     }
   })
 );
 
 orderRouter.put(
-  '/:id/pay',
+  "/:id/pay",
   isAuth,
   expressAsyncHandler(async (req, res) => {
     const order = await Order.findById(req.params.id);
@@ -58,9 +70,9 @@ orderRouter.put(
         email_address: req.body.email_address,
       };
       const updatedOrder = await order.save();
-      res.send({ message: 'Order Paid', order: updatedOrder });
+      res.send({ message: "Order Paid", order: updatedOrder });
     } else {
-      res.status(404).send({ message: 'Order Not Found' });
+      res.status(404).send({ message: "Order Not Found" });
     }
   })
 );

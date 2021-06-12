@@ -84,6 +84,10 @@ button.block {
     width: 100%;
 }
 
+.button.small {
+    font-size: 1.2rem;
+}
+
 /* HEADER */
 
 header {
@@ -245,7 +249,7 @@ img.large {
 .alert-success {
     color: #20a020;
     background-color: #eeffe0;
-  }
+}
 
 .upper-right {
     padding-right: 1rem;
@@ -294,13 +298,35 @@ img.large {
 }
 
 /* CHECKOUT STEPS */
-.checkout-steps > div{
+.checkout-steps > div {
     border-top: 0.3rem solid grey;
     color: grey;
     flex: 1;
     padding: 1rem;
 }
 .checkout-steps > div.active {
-    border-top-color:rgb(71, 211, 71);
+    border-top-color: rgb(71, 211, 71);
     color: rgb(71, 211, 71);
 }
+
+/* TABLE */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table tbody tr:nth-of-type(odd) {
+    background-color:rgb(228, 228, 255)
+    /* background-color: #f4f4f4; */
+  }
+.table td,
+.table th {
+    text-align: left;
+    border: 0.1rem  grey;
+    padding: 0.5rem;
+    
+}
+.table button {
+    margin: 0 0.2rem;
+
+}
+

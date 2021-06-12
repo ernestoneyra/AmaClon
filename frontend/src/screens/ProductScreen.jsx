@@ -20,6 +20,7 @@ export default function ProductScreen(props) {
     props.history.push(`/cart/${productId}?qty=${qty}`);
   };
   return (
+    <>
     <div>
       {loading ? (
         <LoadingBox></LoadingBox>
@@ -113,5 +114,6 @@ export default function ProductScreen(props) {
         </div>
       )}
     </div>
+    </>
   );
 }

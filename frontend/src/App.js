@@ -1,17 +1,24 @@
+/* REACT */
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
+/* SCREENS */
 import CartScreen from "./screens/CartScreen.jsx";
 import HomeScreen from "./screens/HomeScreen.jsx";
 import ProductScreen from "./screens/ProductScreen.jsx";
-import * as ROUTES from "./constants/routes";
 import SignInScreen from "./screens/SignInScreen.jsx";
-import { signout } from "./actions/userActions.js";
 import RegisterScreen from "./screens/RegisterScreen.jsx";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen.jsx";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen.jsx";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen.jsx";
 import OrderScreen from "./screens/OrderScreen.jsx";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen.jsx";
+import ProfileScreen from "./screens/ProfileScreen.jsx";
+/* ROUTES */
+import * as ROUTES from "./constants/routes";
+import PrivateRoute from "./components/PrivateRoute.js";
+/* COMPONENTS */
+import { signout } from "./actions/userActions.js";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -45,9 +52,17 @@ function App() {
                   {userInfo.name} <i className="fa fa-caret-down"></i>
                 </Link>
                 <ul className="dropdown-content">
-                  <Link to={ROUTES.SIGNOUT} onClick={signoutHandler}>
-                    Sign Out
-                  </Link>
+                  <li>
+                    <Link to={ROUTES.PROFILE}>User Profile</Link>
+                  </li>
+                  <li>
+                    <Link to={ROUTES.ORDER_HISTORY}>Order History</Link>
+                  </li>
+                  <li>
+                    <Link to={ROUTES.SIGNOUT} onClick={signoutHandler}>
+                      Sign Out
+                    </Link>
+                  </li>
                 </ul>
               </div>
             ) : (
@@ -66,6 +81,8 @@ function App() {
           <Route path={ROUTES.REGISTER} component={RegisterScreen} />
           <Route path={ROUTES.PAYMENT_METHOD} component={PaymentMethodScreen} />
           <Route path={ROUTES.PLACE_ORDER} component={PlaceOrderScreen} />
+          <Route path={ROUTES.ORDER_HISTORY} component={OrderHistoryScreen} />
+          <PrivateRoute path={ROUTES.PROFILE} component={ProfileScreen} />
           <Route exact path={ROUTES.HOME} component={HomeScreen} />
         </main>
         <footer className="row center">All right reserved</footer>
