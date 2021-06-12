@@ -74,7 +74,7 @@ export default function ProfileScreen() {
                   id="name"
                   type="text"
                   placeholder="Enter Name"
-                  defaultValue={name}
+                  value={name}
                   onChange={(e) => setName(e.target.value)}
                 ></input>
               </div>
@@ -84,7 +84,7 @@ export default function ProfileScreen() {
                   id="email"
                   type="email"
                   placeholder="Enter Email"
-                  defaultValue={email}
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 ></input>
               </div>
