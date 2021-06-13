@@ -35,3 +35,14 @@ export const isAuth = (req, res, next) => {
     res.status(401).send({ message: "No Token" });
   }
 };
+
+//protecting api for admin only. updating products and manage
+export const isAdmin = (req, res, next) => {
+  if(req.user && req.user.isAdmin){
+    //next() means pass to the next middleware
+    next()
+  }else {
+    //Token refers to the JWT Token
+    res.status(401).send({ message: "Invalid Admin Token" });
+  }
+}

@@ -14,11 +14,15 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen.jsx";
 import OrderScreen from "./screens/OrderScreen.jsx";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen.jsx";
 import ProfileScreen from "./screens/ProfileScreen.jsx";
+import ProductListScreen from "./screens/ProductListScreen.jsx";
+import ProductEditScreen from "./screens/ProductEditScreen.jsx";
 /* ROUTES */
 import * as ROUTES from "./constants/routes";
 import PrivateRoute from "./components/PrivateRoute.js";
+import AdminRoute from "./components/AdminRoute.js";
 /* COMPONENTS */
 import { signout } from "./actions/userActions.js";
+
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -70,11 +74,33 @@ function App() {
                 Sign In
               </Link>
             )}
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to={ROUTES.ADMIN}>
+                  Admin {""} <i className="fa fa-caret-down"></i>{" "}
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to={ROUTES.DASHBOARD}>Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link to={ROUTES.PRODUCTLIST}>Products</Link>
+                  </li>
+                  <li>
+                    <Link to={ROUTES.ORDERLIST}>Orders</Link>
+                  </li>
+                  <li>
+                    <Link to={ROUTES.USERLIST}>Users</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </header>
         <main>
           <Route path={ROUTES.CART} component={CartScreen} />
-          <Route path={ROUTES.PRODUCT} component={ProductScreen} />
+          <Route exact path={ROUTES.PRODUCT} component={ProductScreen} />
+          <Route exact path={ROUTES.PRODUCT_EDIT} component={ProductEditScreen} />
           <Route path={ROUTES.SHIPPING} component={ShippingAddressScreen} />
           <Route path={ROUTES.SIGNIN} component={SignInScreen} />
           <Route path={ROUTES.ORDER} component={OrderScreen} />
@@ -83,6 +109,7 @@ function App() {
           <Route path={ROUTES.PLACE_ORDER} component={PlaceOrderScreen} />
           <Route path={ROUTES.ORDER_HISTORY} component={OrderHistoryScreen} />
           <PrivateRoute path={ROUTES.PROFILE} component={ProfileScreen} />
+          <AdminRoute path={ROUTES.PRODUCTLIST} component={ProductListScreen} />
           <Route exact path={ROUTES.HOME} component={HomeScreen} />
         </main>
         <footer className="row center">All right reserved</footer>
