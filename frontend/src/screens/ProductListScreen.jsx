@@ -2,8 +2,15 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import { createProduct, listProducts } from "../actions/productActions";
-import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
+import {
+  createProduct,
+  deleteProduct,
+  listProducts,
+} from "../actions/productActions";
+import {
+  PRODUCT_CREATE_RESET,
+  PRODUCT_DELETE_RESET,
+} from "../constants/productConstants";
 
 export default function ProductListScreen(props) {
   const productList = useSelector((state) => state.productList);
@@ -18,6 +25,14 @@ export default function ProductListScreen(props) {
     product: createdProduct,
   } = productCreate;
 
+  
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,11 +40,17 @@ export default function ProductListScreen(props) {
       dispatch({ type: PRODUCT_CREATE_RESET });
       props.history.push(`/product/${createdProduct._id}/edit`);
     }
+    if (successDelete) {
+      dispatch({ type: PRODUCT_DELETE_RESET });
+    }
     dispatch(listProducts());
-  }, [dispatch, createdProduct, successCreate]);
+  }, [dispatch, createdProduct, successCreate, props.history, successDelete]);
 
-  const deleteHandler = () => {
-    //TODO: dispatch delete action
+  const deleteHandler = (product) => {
+    if(window.confirm('Are you sure to delete')){
+      dispatch(deleteProduct(product._id));
+    }
+    
   };
 
   const createHandler = () => {
@@ -44,6 +65,8 @@ export default function ProductListScreen(props) {
           Create Product
         </button>
       </div>
+      {loadingDelete && <LoadingBox></LoadingBox>}
+      {errorDelete && <MessageBox variant="danger"> {errorDelete} </MessageBox>}
 
       {loadingCreate && <LoadingBox></LoadingBox>}
       {errorCreate && <MessageBox variant="danger"> {errorCreate} </MessageBox>}
@@ -52,7 +75,7 @@ export default function ProductListScreen(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <table>
+        <table className="table">
           <thead>
             <tr>
               <th>ID</th>

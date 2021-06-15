@@ -1,3 +1,13 @@
 .env
 frontend/node_modules/
 /node_modules/
+
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+
+/uploads/*.jpg
+/uploads\*.jpg
