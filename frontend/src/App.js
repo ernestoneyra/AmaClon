@@ -22,6 +22,7 @@ import PrivateRoute from "./components/PrivateRoute.js";
 import AdminRoute from "./components/AdminRoute.js";
 /* COMPONENTS */
 import { signout } from "./actions/userActions.js";
+import OrderListScreen from "./screens/OrderListScreen.jsx";
 
 
 function App() {
@@ -109,6 +110,7 @@ function App() {
           <Route path={ROUTES.PLACE_ORDER} component={PlaceOrderScreen} />
           <Route path={ROUTES.ORDER_HISTORY} component={OrderHistoryScreen} />
           <PrivateRoute path={ROUTES.PROFILE} component={ProfileScreen} />
+          <AdminRoute path={ROUTES.ORDERLIST} component={OrderListScreen} />
           <AdminRoute path={ROUTES.PRODUCTLIST} component={ProductListScreen} />
           <Route exact path={ROUTES.HOME} component={HomeScreen} />
         </main>
