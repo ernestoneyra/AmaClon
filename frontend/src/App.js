@@ -23,7 +23,8 @@ import AdminRoute from "./components/AdminRoute.js";
 /* COMPONENTS */
 import { signout } from "./actions/userActions.js";
 import OrderListScreen from "./screens/OrderListScreen.jsx";
-
+import UserListScreen from "./screens/UserListScreen.jsx";
+import UserEditScreen from "./screens/UserEditScreen.jsx";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -101,7 +102,11 @@ function App() {
         <main>
           <Route path={ROUTES.CART} component={CartScreen} />
           <Route exact path={ROUTES.PRODUCT} component={ProductScreen} />
-          <Route exact path={ROUTES.PRODUCT_EDIT} component={ProductEditScreen} />
+          <Route
+            exact
+            path={ROUTES.PRODUCT_EDIT}
+            component={ProductEditScreen}
+          />
           <Route path={ROUTES.SHIPPING} component={ShippingAddressScreen} />
           <Route path={ROUTES.SIGNIN} component={SignInScreen} />
           <Route path={ROUTES.ORDER} component={OrderScreen} />
@@ -111,6 +116,8 @@ function App() {
           <Route path={ROUTES.ORDER_HISTORY} component={OrderHistoryScreen} />
           <PrivateRoute path={ROUTES.PROFILE} component={ProfileScreen} />
           <AdminRoute path={ROUTES.ORDERLIST} component={OrderListScreen} />
+          <AdminRoute path={ROUTES.USER_LIST} component={UserListScreen} />
+          <AdminRoute path={ROUTES.EDIT_USER} component={UserEditScreen} />
           <AdminRoute path={ROUTES.PRODUCTLIST} component={ProductListScreen} />
           <Route exact path={ROUTES.HOME} component={HomeScreen} />
         </main>
