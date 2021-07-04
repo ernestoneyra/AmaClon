@@ -7,7 +7,7 @@ import { USER_LIST } from "../constants/routes";
 import { USER_UPDATE_RESET } from "../constants/userConstants";
 
 
-export default function UserEditScreen(props) {
+export default function UserEdit(props) {
   const userId = props.match.params.id;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

@@ -12,7 +12,7 @@ import {
   ORDER_PAY_RESET,
 } from "../constants/orderConstants";
 
-export default function OrderScreen(props) {
+export default function Order(props) {
   const orderId = props.match.params.id;
   const [sdkReady, setSdkReady] = useState(false);
   const orderDetails = useSelector((state) => state.orderDetails);

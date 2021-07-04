@@ -5,7 +5,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { USER_DETAILS_RESET } from "../constants/userConstants";
 
-export default function UserListScreen(props) {
+export default function UserList(props) {
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
 

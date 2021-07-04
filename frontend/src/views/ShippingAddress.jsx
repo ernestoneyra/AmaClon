@@ -4,7 +4,7 @@ import { saveShippingAddress } from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { PAYMENT_METHOD, SIGNIN } from "../constants/routes";
 
-export default function ShippingAddressScreen(props) {
+export default function ShippingAddress(props) {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const cart = useSelector(state => state.cart)

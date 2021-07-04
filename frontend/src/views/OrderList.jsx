@@ -5,7 +5,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { ORDER_DELETE_RESET } from "../constants/orderConstants.js";
 
-export default function OrderListScreen(props) {
+export default function OrderList(props) {
   const orderList = useSelector((state) => state.orderList);
   const { loading, error, orders } = orderList;
   const dispatch = useDispatch();

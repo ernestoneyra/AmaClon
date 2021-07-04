@@ -8,7 +8,7 @@ import { PAYMENT_METHOD } from "../constants/routes";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 
-export default function PlaceOrderScreen(props) {
+export default function PlaceOrder(props) {
   const cart = useSelector((state) => state.cart);
   if (!cart.paymentMethod) {
     props.history.push(PAYMENT_METHOD);

@@ -12,7 +12,7 @@ import {
   PRODUCT_DELETE_RESET,
 } from "../constants/productConstants";
 
-export default function ProductListScreen(props) {
+export default function ProductList(props) {
   const productList = useSelector((state) => state.productList);
   //extract {...} from productList
   const { loading, error, products } = productList;
