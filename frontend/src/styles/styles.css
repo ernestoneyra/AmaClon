@@ -75,9 +75,18 @@ button:hover {
     border: 0.1rem grey solid;
 }
 
+.deletebutton{
+    background-color: red;
+    border-color: red;
+}
+.deletebutton:hover{
+   
+    border-color: red;
+}
+
 
 button.primary {
-    background-color: rgb(255, 221, 27);
+    background-color: rgb(160, 250, 133);
 }
 
 button.block {
@@ -335,11 +344,21 @@ img.large {
     border-radius: 0.5rem;
     border-right: none;
     margin-left: 0.5rem;
+ 
 }
+.primarysearch{
+    background-color: #db9615;
+    border-color:  #db9615;
+}
+
+.primarysearch:hover{
+    border-color:  #db9615;
+    }
 .search input {
     border-radius: 1rem;
     border-right: none;
     margin-left: 0.5rem;
+    padding-right: 20rem;
 }
 .active {
     font-weight: bold;

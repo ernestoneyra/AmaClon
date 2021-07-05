@@ -37,6 +37,8 @@ export default function Order(props) {
 
   const dispatch = useDispatch();
 
+
+  /////PAYPAL//////
   useEffect(() => {
     const addPayPalScript = async () => {
       const { data } = await axios.get("/api/config/paypal");
@@ -69,6 +71,8 @@ export default function Order(props) {
       }
     }
   }, [dispatch, order, orderId, sdkReady, successPay, successDeliver]);
+/////////
+
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(order, paymentResult));

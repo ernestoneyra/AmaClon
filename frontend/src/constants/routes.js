@@ -2,6 +2,7 @@ export const CART = "/cart/:id?"
 export const HOME = "/"
 export const PRODUCT = "/product/:id"
 export const PRODUCT_EDIT = "/product/:id/edit"
+export const PRODUCT_CREATE = '/product/:id/create'
 export const SIGNIN = '/signin'
 export const SIGNOUT = '#signout'
 export const REGISTER = '/register'

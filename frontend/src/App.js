@@ -5,6 +5,7 @@ import { BrowserRouter, Link, Route } from "react-router-dom";
 /* VIEWS */
 import Cart from "./views/Cart.jsx";
 import Home from "./views/Home.jsx";
+import Dashboard from "./views/Dashboard.jsx";
 import Product from "./views/Product.jsx";
 import SignIn from "./views/SignIn.jsx";
 import Register from "./views/Register.jsx";
@@ -19,6 +20,7 @@ import ProductEdit from "./views/ProductEdit.jsx";
 import OrderList from "./views/OrderList.jsx";
 import UserList from "./views/UserList.jsx";
 import UserEdit from "./views/UserEdit.jsx";
+import ProductCreate from "./views/ProductCreate.jsx";
 /* ROUTES */
 import * as ROUTES from "./constants/routes";
 import PrivateRoute from "./components/PrivateRoute.js";
@@ -30,7 +32,7 @@ import Search from "./views/Search.jsx";
 import { listProductCategories } from "./actions/productActions.js";
 import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
-import SearchScreen from "./views/Search.jsx";
+
 
 
 function App() {
@@ -180,14 +182,16 @@ function App() {
           <Route exact path={ROUTES.CATEGORY} component={Search} />
           <Route exact path={ROUTES.CATEGORY_NAME} component={Search} />
           <Route exact path={ROUTES.SEARCH_FILTER} component={Search} />
+          <Route path={ROUTES.DASHBOARD} component={Dashboard} />
           <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
           <AdminRoute path={ROUTES.ORDERLIST} component={OrderList} />
           <AdminRoute path={ROUTES.USER_LIST} component={UserList} />
           <AdminRoute path={ROUTES.EDIT_USER} component={UserEdit} />
           <AdminRoute path={ROUTES.PRODUCTLIST} component={ProductList} />
+          <AdminRoute path={ROUTES.PRODUCT_CREATE} component={ProductCreate} />
           <Route exact path={ROUTES.HOME} component={Home} />
         </main>
-        <footer className="row center">All right reserved</footer>
+        <footer className="row center">Copyright 2021</footer>
       </div>
     </BrowserRouter>
   );
